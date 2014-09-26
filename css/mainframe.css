@@ -1,0 +1,55 @@
+body {
+    font-family: "MIcrosoft YaHei";
+}
+
+.header ul li {
+    display: inline-block;
+    float: left;
+    text-align: center;
+    width:50%;
+    height:100%;
+}
+
+.header ul li a {
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    width:100%;
+    height:100%;
+}
+
+.clearer {
+    clear: both;
+}
+
+.selected {
+    background-color: lightblue;
+    color: white;
+}
+
+.dialog {
+    display: block;
+    position: fixed!important;
+    width: 90%;
+    height: 30%;
+    background-color: rgb(206,206,206);
+    margin:auto;
+    top:100px;
+    left:25px;
+}
+
+.dialog input {
+    width : 40px;
+    height: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.dialog span {
+    position: relative;
+    top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 92px;
+    display: block;
+}

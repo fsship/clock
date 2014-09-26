@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="clock">
+<head>
+    <meta charset="UTF-8">
+    <title>Clock</title>
+    <link rel="stylesheet" href="css/mainframe.css"/>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body ng-controller="clockapp" ng-init="toShow = 'clock'">
+    <div class="header" style="width:100%;height:20%;">
+        <ul style="list-style:none;height:100%">
+            <li>
+                <a href="#" style="display:inline-block" ng-class="{selected : toShow == 'clock'}" ng-click="toShow = 'clock'">表盘</a>
+            </li>
+            <li>
+                <a href="#" style="display:inline-block" ng-class="{selected : toShow == 'sounder'}" ng-click="toShow = 'sounder'">闹钟</a>
+            </li>
+        </ul>
+    </div>
+    <div class="clearer"></div>
+    <div class="clock" style="height:80%;text-align:center" ng-show="toShow == 'clock'">
+        <canvas id="clockarea" width="350" height="350" style="text-align:center"></canvas>
+        <button style="width:100%;height:30px" ng-click="stopPlay()" ng-show="document.getElementById('ringsound').currentTime != 0">停止闹铃</button>
+    </div>
+    <div class="sounder" style="height:80%" ng-show="toShow == 'sounder'">
+        <button style="position:relative;width:100%;height:40px;font-size:20;top:10px" ng-click="addNewClockClick()">添加闹钟</button>
+        <div ng-show="clocks.length == 0" style="top:100px;position:absolute">
+            当前还没有闹钟
+        </div>
+        <div class="clock-list">
+            <ul style="list-style:none">
+                <li ng-repeat="clock in clocks">
+                    <span>{{ addZero(clock.time_h) }}:{{ addZero(clock.time_m) }}</span>
+                    <button ng-click="editClockClick(clock.clockId)">修改</button>
+                    <button ng-click="removeClock(clock.clockId)">删除</button>
+                </li>
+            </ul>
+        </div>
+        <div class="dialog" ng-show="showdialog == true">
+            <span>
+                <input type="text"/ id="hour">:<input type="text"/ id="minute">
+            </span>
+            <br />
+            <button ng-click="submitClick()" style="width:50%;height:40px;font-size:20;float:left;top:10px;position:relative">确定</button>
+            <button ng-click="showdialog = false" style="width:50%;height:40px;font-size:20;float:left;top:10px;position:relative">取消</button>
+        </div>
+        <audio id="ringsound">
+            <source src="sound/Snowy.ogg" type="audio/ogg" />
+        </audio>
+    </div>
+</body>
+</html>

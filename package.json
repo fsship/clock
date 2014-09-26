@@ -1,0 +1,17 @@
+{
+  "main": "index.html",
+  "name": "Clock",
+  "version": "0.1",
+  "window": {
+    "title": "Clock",
+    "toolbar": false,
+    "frame": true,
+    "width": 450,
+    "height": 470,
+    "position": "center",
+    "resizable": false,
+    "icon": "img/puzzle.png",
+    "show": true
+  },
+  "chromium-args": "--enable-threaded-compositing"
+}
